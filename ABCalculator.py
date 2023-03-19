@@ -5,6 +5,15 @@ import tkinter as tk
 # Функция закрытия программы
 def do_close():
     root.destroy()
+
+def popup_window():
+    window=tk.Toplevel()                                  # создание дополнительного окна
+    window.geometry("280x300")                            # задание размеров окна
+    window.title("A/B результат")                         # задание титульного названия окна
+
+    # Добавление кнопки закрытия окна
+    btnClosePopup=tk.Button(window,text="Закрыть", font = ('Helvetica', 10, 'bold'), command=window.destroy)          
+    btnClosePopup.place(x=160, y=250, width=90, height=30)                                                     
     
 # Окно главного окна
 root=tk.Tk()                                  # создание окна
@@ -62,8 +71,8 @@ entConversions2.place(x=115, y=205, width=90, height=20)
 
 
 # Добавление кнопки "Рассчитать"
-btnProcess = tk.Button(root,text="Рассчитать", font = ('Helvetica', 10, 'bold'))                         # создание кнопки "График Рассчитать"
-btnProcess.place(x=25, y=250, width=90, height=30)                                                       # определение местоположения кнопки "График 1" и размеров кнопки)                                                                              # определение местоположения заголовка 
+btnProcess = tk.Button(root,text="Рассчитать", font = ('Helvetica', 10, 'bold'), command=popup_window)                   # создание кнопки "График Рассчитать"
+btnProcess.place(x=25, y=250, width=90, height=30)                                                                      # определение местоположения кнопки "График 1" и размеров кнопки)                                                                              # определение местоположения заголовка 
 
 # Добавление кнопки закрытия программы
 btnClose=tk.Button(root,text="Закрыть", font = ('Helvetica', 10, 'bold'), command=do_close)         # создание кнопки "Закрыть"
