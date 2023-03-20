@@ -6,7 +6,19 @@ import tkinter as tk
 def do_close():
     root.destroy()
 
-def popup_window():
+def do_processing():
+    # Считывание данных из полей ввода
+    n1 = int(entVisitors1.get())
+    c1 = int(entConversions1.get())
+    n2 = int(entVisitors2.get())
+    c2 = int(entConversions2.get())
+
+    popup_window(n1, c1, n2, c2)
+
+
+
+# Функция вызова окна результатов
+def popup_window(n1, c1, n2, c2):
     window=tk.Toplevel()                                  # создание дополнительного окна
     window.geometry("280x300")                            # задание размеров окна
     window.title("A/B результат")                         # задание титульного названия окна
@@ -14,6 +26,10 @@ def popup_window():
     # Добавление кнопки закрытия окна
     btnClosePopup=tk.Button(window,text="Закрыть", font = ('Helvetica', 10, 'bold'), command=window.destroy)          
     btnClosePopup.place(x=160, y=250, width=90, height=30)                                                     
+    
+    # Перевод фокуса на созданное окно
+    window.focus_force()
+    
     
 # Окно главного окна
 root=tk.Tk()                                  # создание окна
@@ -64,17 +80,9 @@ entConversions2.place(x=115, y=205, width=90, height=20)
 entConversions2.insert(tk.END, '0')
 
 
-
-
-
-
-
-
-
-
 # Добавление кнопки "Рассчитать"
-btnProcess = tk.Button(root,text="Рассчитать", font = ('Helvetica', 10, 'bold'), command=popup_window)                   # создание кнопки "График Рассчитать"
-btnProcess.place(x=25, y=250, width=90, height=30)                                                                      # определение местоположения кнопки "График 1" и размеров кнопки)                                                                              # определение местоположения заголовка 
+btnProcess = tk.Button(root,text="Рассчитать", font = ('Helvetica', 10, 'bold'), command=do_processing)             # создание кнопки "Рассчитать"
+btnProcess.place(x=25, y=250, width=90, height=30)                                                                  # определение местоположения кнопки
 
 # Добавление кнопки закрытия программы
 btnClose=tk.Button(root,text="Закрыть", font = ('Helvetica', 10, 'bold'), command=do_close)         # создание кнопки "Закрыть"
